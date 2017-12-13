@@ -1,0 +1,52 @@
+<!--
+  Generated template for the CardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{card.cardName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="cardPageContainer" padding>
+
+  <img src="{{card.img}}">
+
+  <p>Posted by: {{card.userName}}</p>
+  <p>{{card.date}}</p>
+
+  <div class="container">
+    <!--<h1>Comments</h1>-->
+    <!--<form method="post">-->
+      <!--<div class="form-group">-->
+        <!--<h2 for="comment">Comments For: {{card.userName}}</h2>-->
+        <!--<br>-->
+        <!--<textarea placeholder="Add a public comment..." class="form-control" id="comment" required></textarea>-->
+      <!--</div>-->
+      <!--<br>-->
+      <!--<button type="submit" class="btn btn-success">Submit</button>-->
+
+    <!--</form>-->
+
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Comments</ion-label>
+        <ion-textarea [(ngModel)]="newComment" name="description" placeholder="Add a public comment..."></ion-textarea>
+      </ion-item>
+      <button class="btn" ion-button type="submit" block>Comment</button>
+    </form>
+
+    <ion-item class="commentZone" *ngFor="let comment of card.comments">
+      <p>Posted by: {{card.userName}}</p>
+      <p>{{card.commentDate}}</p>
+      <div class="comment">{{comment}}</div>
+    </ion-item>
+
+
+  </div>
+</ion-content>

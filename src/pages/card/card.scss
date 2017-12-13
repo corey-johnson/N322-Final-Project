@@ -1,0 +1,31 @@
+page-card {
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  resize: none;
+  border: none;
+}
+
+  button {
+    background: #e30046;
+    border-radius: 0;
+    border-color: #e30046;
+    color: #ffffff;
+    width: 100px;
+    height: 50px;
+  }
+
+  .cardPageContainer{
+    width: 414px;
+  }
+  .commentZone {
+    height: inherit;
+    //overflow: inherit;
+  }
+  .comment {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+}

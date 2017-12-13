@@ -1,14 +1,106 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Pixels
     </ion-title>
+    <ion-buttons end padding-right>
+      <button ion-button icon-only (click)="addCard()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-avatar item-start padding-left>
+     <div class="avatar">
+       <img src="../assets/img/avatar.png" style="height: 30px; width: 30px;">
+     </div>
+    </ion-avatar>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="mainBody" padding>
+  <ion-card *ngFor="let card of cards | async">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{card.cardAvatar}}">
+      </ion-avatar>
+      <button clear ion-button icon-only float-right align-items-center (click)="deleteCard(card.id)">
+        <ion-icon color="danger" name="trash"></ion-icon>
+      </button>
+      <button clear ion-button icon-only float-right align-items-center (click)="updateCard(card)">
+        <ion-icon name="hammer"></ion-icon>
+      </button>
+      <h2>{{card.cardName}}</h2>
+      <p>Posted By: {{card.userName}}</p>
+      <p>{{card.date}}</p>
+    </ion-item>
+    <button (click)="cardPageClick(card)">
+    <img src="{{card.img}}">
+    </button>
+    <ion-card-content>
+      {{card.cardContent}}
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="likesClicked(card)">
+          <ion-icon name="thumbs-up"> {{card.likes}}</ion-icon>
+        </button>
+        <button ion-button icon-right clear small (click)="dislikesClicked(card)">
+          <ion-icon name="thumbs-down"> {{card.dislikes}}</ion-icon>
+          <!--&nbsp;-->
+          <!--&nbsp;-->
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="cardPageClick(card)">
+          <ion-icon name="text"></ion-icon>
+          <div>{{card.comments.length}} Comments</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
+
+<!--<ion-header>-->
+  <!--<ion-navbar>-->
+    <!--<ion-title>-->
+      <!--Card List-->
+    <!--</ion-title>-->
+    <!--<ion-buttons end>-->
+      <!--<button ion-button icon-only (click)="addCard()">-->
+        <!--<ion-icon name="add"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+  <!--</ion-navbar>-->
+<!--</ion-header>-->
+
+<!--<ion-content padding>-->
+
+  <!--<ion-card *ngFor="let card of cards | async">-->
+    <!---->
+    <!--<img src="{{card.img}}"/>-->
+    <!--<ion-card-title>-->
+      <!--{{card.cardName}}-->
+    <!--</ion-card-title>-->
+    <!--<ion-card-content>-->
+      <!--{{card.cardContent}}-->
+    <!--</ion-card-content>-->
+    <!--<ion-row>-->
+      <!--<ion-col>-->
+        <!--<button ion-button icon-left clear small (click)="likesClicked(card)">-->
+          <!--<ion-icon name="thumbs-up"> {{card.likes}}</ion-icon>-->
+        <!--</button>-->
+        <!--<button ion-button icon-right clear small (click)="dislikesClicked(card)">-->
+          <!--<ion-icon name="thumbs-down"> {{card.dislikes}}</ion-icon>-->
+          <!--&lt;!&ndash;&nbsp;&ndash;&gt;-->
+          <!--&lt;!&ndash;&nbsp;&ndash;&gt;-->
+        <!--</button>-->
+      <!--</ion-col>-->
+      <!--<ion-col>-->
+        <!--<button ion-button icon-left clear small>-->
+          <!--<ion-icon name="text"></ion-icon>-->
+          <!--<div>4 Comments</div>-->
+        <!--</button>-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
+
+  <!--</ion-card>-->
+
+<!--</ion-content>-->
