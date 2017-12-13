@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DataProvider} from "../../providers/data/data";
-import {update} from "ionic-angular/umd/components/slides/swiper/swiper";
 
 /**
  * Generated class for the CardPage page.
@@ -25,7 +24,6 @@ export class CardPage {
 
     comments = [];
 
-    commentDate = [];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService:DataProvider) {
@@ -43,13 +41,14 @@ export class CardPage {
 
     logForm() {
         // this.card.comment = this.comment;
-        this.card.comments.push(this.newComment);
-        this.dataService.updateComment(this.card);
-        this.newComment = '';
-        if(this.card.comments) {
-            this.card.commentDate = new Date();
-        }
+        let newDate = new Date();
 
+
+
+
+        this.card.comments.push({comment: this.newComment, date: newDate});
+        this.newComment = '';
+        this.dataService.updateComment(this.card);
         // let today = new Date();
         // let date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
         // let time = today.getHours() + ":" + today.getMinutes();

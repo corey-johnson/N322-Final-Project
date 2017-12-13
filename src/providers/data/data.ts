@@ -20,8 +20,8 @@ export interface Card {
     date:string;
     userName: string;
     // comment: string;
-    comments: Array<any>;
-    commentDate:Array<any>;
+    comments: Array<object>;
+    // commentDate:Array<any>;
 }
 
 @Injectable()
@@ -68,11 +68,11 @@ export class DataProvider {
 
   updateComment(card) {
       this.cardsListRef.doc(card.id).update({ comments: card.comments });
-      // this.cardsListRef.doc(card.id).update({commentDate:card.commentDate});
+      // this.cardsListRef.doc(card.id).update({date: card.date});
   }
 
-  updateCommentDate(card) {
-      this.cardsListRef.doc(card.id).update({commentDate:card.commentDate});
-  }
+    // updateCommentDate(card) {
+    //     this.cardsListRef.doc(card.id).update({commentDate:card.commentDate});
+    // }
 
 }

@@ -43,8 +43,9 @@
 
     <ion-item class="commentZone" *ngFor="let comment of card.comments">
       <p>Posted by: {{card.userName}}</p>
-      <p>{{card.commentDate}}</p>
-      <div class="comment">{{comment}}</div>
+      <!--<p>{{card.commentDate}}</p>-->
+      <div class="comment">{{comment.comment}}</div>
+      <div class="comment">{{comment.date}}</div>
     </ion-item>
 
 
